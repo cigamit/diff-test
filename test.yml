@@ -1,4 +1,4 @@
-- hosts: jc-demo-rocky8
+- hosts: JC-Demo-Rocky8
   gather_facts: no
   connection: local
   tasks:
