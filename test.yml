@@ -21,5 +21,10 @@
     - name: Replace contents
       ansible.builtin.lineinfile:
         path: /tmp/foo.conf
-        regexp: '^192.168.1.99'
-        line: '192.168.1.111 foo.lab.net foo'
+        regexp: "{{ item.r }}"
+        line: "{{ item.l }}"
+      loop:
+        - r: '^192.168.1.99'
+          l: '192.168.1.111 foo.lab.net foo'
+        - r: '^192.168.1.100'
+          l: '192.168.1.200 foo2.lab.net foo'
