@@ -1,0 +1,25 @@
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Change file ownership, group and permissions
+      ansible.builtin.file:
+        path: /etc/foo.conf
+        mode: '0644'
+        state: file
+
+    - name: Add some contents
+      ansible.builtin.lineinfile:
+        path: /etc/foo.conf
+        line: 192.168.1.99 foo.lab.net foo
+
+    - name: Add some contents2
+      ansible.builtin.lineinfile:
+        path: /etc/foo.conf
+        line: 192.168.1.100 foo2.lab.net foo
+
+    - name: Replace contents
+      ansible.builtin.lineinfile:
+        path: /etc/foo.conf
+        regexp: '^192.168.1.99'
+        line: '192.168.1.111 foo.lab.net foo'
