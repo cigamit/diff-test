@@ -6,7 +6,7 @@
       ansible.builtin.file:
         path: /etc/foo.conf
         mode: '0644'
-        state: file
+        state: touch
 
     - name: Add some contents
       ansible.builtin.lineinfile:
